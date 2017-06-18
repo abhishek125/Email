@@ -1,0 +1,20 @@
+.center-block {
+	margin-left:0px;
+}
+.custom1 .form-style-fake{position:absolute;top:0px;}
+.custom1 .form-style-base{position:absolute;top:0px;z-index: 999;opacity: 0;}
+.custom1 .form-control{padding: 10px 50px;}
+.custom1 .form-input{height:50px;border-radius: 0px;margin-top: 20px;}
+
+.custom1 .fake-styled-btn{
+    background: #006cad;
+    padding: 10px;
+    color: #fff;
+}
+.custom1 .margin{margin-top:10px;margin-bottom:10px;}
+.truncate {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
