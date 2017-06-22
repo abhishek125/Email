@@ -1,5 +1,8 @@
 var message = new Object();
 var header, token, action;
+function theFocus(obj) {
+	 $('[data-toggle="tooltip"]').tooltip(); 
+}
 
 function send(action, virtualMessage) {
 	$.ajax({
