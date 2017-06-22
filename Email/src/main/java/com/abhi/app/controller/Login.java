@@ -43,9 +43,16 @@ public String loginPage()
 @RequestMapping(value="/signup", method=RequestMethod.POST)
 public ModelAndView signUpPage(@ModelAttribute("profile") Profile profile , @RequestParam("confirm") String confirm  ) throws ParseException 
 {
+	profile.setEmail(profile.getEmail().toLowerCase());
 	ModelAndView modelAndView=new ModelAndView("login");
-	boolean exist=profileDaoService.saveProfile(profile,confirm);
-	String result=exist==true?"account created you can now login":"account creation error please try again";
+	if(profile.getPassword().length()<8)
+	{
+		modelAndView.addObject("message","pasword length too short");
+		return modelAndView;
+	}
+	boolean created=false;
+	created=profileDaoService.saveProfile(profile,confirm);
+	String result=created==true?"account created you can now login":"account creation error please try again";
 	modelAndView.addObject("message",result);
 	return modelAndView;
 }
