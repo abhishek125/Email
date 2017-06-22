@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,12 +18,15 @@ public class Profile {
 private String id;
 @NotNull
 @Size(min=5,max=60)
+@Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
 private String email;
 @NotNull
 @Size(min=2,max=45)
+@Pattern(regexp="/^[a-z ,.'-]+$/i")
 private String firstname;
 @NotNull
 @Size(min=2,max=45)
+@Pattern(regexp="/^[a-z ,.'-]+$/i")
 private String lastname;
 @NotNull
 @Size(min=8, max=65)
@@ -30,6 +35,7 @@ private String password;
 private String role;
 private String company;
 @DateTimeFormat(pattern = "yyyy-MM-dd")
+@Past
 private Date dob;
 private String profilePic;
 

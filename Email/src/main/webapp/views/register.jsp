@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -35,7 +35,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="firstname" id="firstname"  placeholder="Enter your Name"/>
+									<input type="text" class="form-control" name="firstname" id="firstname"  placeholder="Enter your Name" data-toggle="tooltip" data-placement="top" title="dont use special symbols"/>
 								</div>
 							</div>
 						</div>
@@ -45,7 +45,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="lastname" id="lastname"  placeholder="Enter your lastname"/>
+									<input type="text" class="form-control" name="lastname" id="lastname"  placeholder="Enter your lastname" data-toggle="tooltip" data-placement="top" title="dont use spacial symbols"/>
 								</div>
 							</div>
 						</div>
@@ -55,7 +55,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="email" class="form-control" name="email" id="email"  placeholder="new Email address"/>
+									<input type="email" class="form-control" name="email" id="email"  placeholder="new Email address" data-toggle="tooltip" data-placement="top" title="enter valid email format"/>
 								</div>
 							</div>
 						</div>
@@ -67,7 +67,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" data-toggle="tooltip" data-placement="top" title="at least 8 characters"/>
 								</div>
 							</div>
 						</div>
@@ -77,7 +77,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" data-toggle="tooltip" data-placement="top" title="same as password"/>
 								</div>
 							</div>
 						</div>

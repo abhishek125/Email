@@ -45,8 +45,8 @@ public ModelAndView signUpPage(@ModelAttribute("profile") Profile profile , @Req
 {
 	ModelAndView modelAndView=new ModelAndView("login");
 	boolean exist=profileDaoService.saveProfile(profile,confirm);
-	String result=exist==true?"account created":"account already exist";
-	modelAndView.addObject(result);
+	String result=exist==true?"account created you can now login":"account creation error please try again";
+	modelAndView.addObject("message",result);
 	return modelAndView;
 }
 @RequestMapping(value="/register",method=RequestMethod.GET)
