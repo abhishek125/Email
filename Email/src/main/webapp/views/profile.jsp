@@ -87,7 +87,7 @@
 										<div class="form-group">
 											<label class="col-lg-2 control-label">To</label>
 											<div class="col-lg-10">
-												<input type="text" placeholder="" id="receiverMail" name="receiverId" class="form-control" />
+												<input type="text" placeholder="separate multiple email using comma" id="receiverMail" name="receiverId" class="form-control" />
 											</div>
 										</div>
 										<div class="form-group">

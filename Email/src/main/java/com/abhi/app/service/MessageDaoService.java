@@ -34,10 +34,12 @@ public class MessageDaoService {
 	}
 	public boolean saveMessage(Message message)
 	{
-		String email=message.getReceiverId();//fetch receiver email of message object
+		boolean res=false;
+		String[] allMails=message.getReceiverId().split(",");
+		for(String email:allMails) {
 		Profile id=profileDao.findProfileByMail(email);
-		if(id==null || id.getId().equals(message.getSenderId()))//either receiver mail is wrong or sender is same as areceiver 
-			return false;
+		if(id==null || id.getId().equals(message.getSenderId()))//either receiver mail is wrong or sender is same as receiver 
+			continue;
 		message.setReceiverId(id.getId());
 		message.setMessageId(utils.nextUniqueMessageId());
 		message.setSenderStatus(Message.Status.OUTBOX);
@@ -45,7 +47,9 @@ public class MessageDaoService {
 		message.setReceiverRead(Read.UNREAD);
 		message.setSenderRead(Read.READ);
 		messageDao.saveMessage(message);
-		return true;
+		res=true;
+		}
+		return res;//return true if at least one email is correct else false 
 	}
 
 	public boolean statusUpdate(String loggedInUserId, List<String> messageIdList, String action)
