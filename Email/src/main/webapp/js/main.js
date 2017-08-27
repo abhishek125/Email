@@ -181,11 +181,28 @@ function none() {
 function changeStatus(option) {
 	var selectedItems = [];
 	action = "/Email/updatestatus";
-	$('.unread, .read').find('input:checked').prev().each(function() {
-		var id=$(this).attr('value');
-		selectedItems.push(id);
-		$("#"+"my"+id).remove();
-	});
+	if(option==="READ"){
+		$('.unread').find('input:checked').prev().each(function() {
+			$("#my"+$(this).attr('value')).removeClass('unread')
+			$("#my"+$(this).attr('value')).addClass('read')
+			selectedItems.push($(this).attr('value'));
+			});
+	}
+	else if(option==="UNREAD"){
+		$('.read').find('input:checked').prev().each(function() { 
+			$("#my"+$(this).attr('value')).removeClass('read')
+			$("#my"+$(this).attr('value')).addClass('unread')
+			selectedItems.push($(this).attr('value'));
+			});
+	}
+	else {
+		$('.unread, .read').find('input:checked').prev().each(function() {
+			var id = $(this).attr('value');
+			selectedItems.push(id);
+			$("#" + "my" + id).remove();
+			$("#" + id).remove();
+		});
+	}
 	sendStatus(selectedItems, action, option);
 }
 function sendStatus(selectedItems, action, option) {
@@ -200,10 +217,10 @@ function sendStatus(selectedItems, action, option) {
 			xhr.setRequestHeader(header, token);
 		},
 		success : function(resultData) {
-			$('#dynamicstatus').html(resultData).css("display","block").fadeOut(3000);
+			$('#dynamicstatus').html(resultData).css("display","inline").fadeOut(3000);
 		},
 		error : function(resultData) {
-			$('#dynamicstatus').html(resultData).css("display","block").fadeOut(3000);
+			$('#dynamicstatus').html(resultData).css("display","inline").fadeOut(3000);
 		}
 	});
 }
