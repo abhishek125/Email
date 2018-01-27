@@ -11,19 +11,19 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema newdb
+-- Schema email
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema newdb
+-- Schema email
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `newdb` DEFAULT CHARACTER SET utf8 ;
-USE `newdb` ;
+CREATE SCHEMA IF NOT EXISTS `email` DEFAULT CHARACTER SET utf8 ;
+USE `email` ;
 
 -- -----------------------------------------------------
--- Table `newdb`.`profile`
+-- Table `email`.`profile`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `newdb`.`profile` (
+CREATE TABLE IF NOT EXISTS `email`.`profile` (
   `id` VARCHAR(32) NOT NULL,
   `email` VARCHAR(60) NULL DEFAULT NULL,
   `password` VARCHAR(90) NULL DEFAULT NULL,
@@ -41,9 +41,9 @@ COMMENT = '	';
 
 
 -- -----------------------------------------------------
--- Table `newdb`.`inbox`
+-- Table `email`.`inbox`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `newdb`.`inbox` (
+CREATE TABLE IF NOT EXISTS `email`.`inbox` (
   `messageid` VARCHAR(45) NOT NULL,
   `receiverId` VARCHAR(32) NOT NULL,
   `messagebody` LONGTEXT NULL DEFAULT NULL,
@@ -60,12 +60,12 @@ CREATE TABLE IF NOT EXISTS `newdb`.`inbox` (
   INDEX `idforsender_idx` (`senderId` ASC),
   CONSTRAINT `idforreceiver`
     FOREIGN KEY (`receiverId`)
-    REFERENCES `newdb`.`profile` (`id`)
+    REFERENCES `email`.`profile` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `idforsender`
     FOREIGN KEY (`senderId`)
-    REFERENCES `newdb`.`profile` (`id`)
+    REFERENCES `email`.`profile` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
