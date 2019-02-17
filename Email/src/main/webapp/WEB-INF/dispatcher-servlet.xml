@@ -19,11 +19,7 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 	 <context:property-placeholder location="classpath:application.properties" />
 	<mvc:annotation-driven />
 	<mvc:resources mapping="/resources/**" location="/" />
-<<<<<<< HEAD
 	<mvc:resources mapping="/uploads/**" location="${UPLOAD_LOCATION}" />
-=======
-	<mvc:resources mapping="/uploads/**" location="${upload.location}" />
->>>>>>> af64bdfde7e9162d7e82ad612c4e0ec573680e58
 	
 	
 	<bean id="viewResolver"

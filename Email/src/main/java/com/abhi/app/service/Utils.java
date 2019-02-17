@@ -6,16 +6,17 @@ import java.security.SecureRandom;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class Utils {
-	@Value("${upload.location}")
-    private String filePath;
+	//convert String to date object
 	public Date newDate(String myDate, String oldFormat, String newFormat) throws ParseException {
 		Date date = new SimpleDateFormat(oldFormat).parse(myDate);//changing string date to date object with same date
 		DateFormat format = new SimpleDateFormat(newFormat);//our desired format of date
@@ -36,27 +37,48 @@ public class Utils {
 	public String nextUniqueMessageId() {
 		return nextUniqueId();		
 	}
-	public Date currentDate(String dateFormat) throws ParseException
+	public Date currentDate(String dateFormat) 
 	{
-		DateFormat df = new SimpleDateFormat(dateFormat);
-		String string = df.format(new Date());
-		Date currentDate = df.parse(string);
+		LocalDate localDate = LocalDate.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(dateFormat);
+		DateFormat format = new SimpleDateFormat(dateFormat);//our desired format of date
+		/*Date currentDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());*/
+		Date currentDate=null;
+		try {
+			currentDate = format.parse(dtf.format(localDate));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return currentDate;
-
 	}
+	public Date currentDateAndTime(String dateFormat)
+	{
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(dateFormat);
+		DateFormat format = new SimpleDateFormat(dateFormat);//our desired format of date
+		/*Date currentDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());*/
+		Date currentDate=null;
+		try {
+			currentDate = format.parse(dtf.format(now));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return currentDate;
+		/*Date in = new Date();
+		LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
+		Date out = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+		return out;*/
+	}
+	
 	public String fileUpload(MultipartFile[] files)
 	{
 		String listOfFileNames="";
 		try {
-<<<<<<< HEAD
-            String filePath;
+			String filePath;
             if(System.getenv("UPLOAD_LOCATION")!=null)
-=======
-			
-     /*       if(System.getenv("UPLOAD_LOCATION")!=null)
->>>>>>> af64bdfde7e9162d7e82ad612c4e0ec573680e58
             	filePath=System.getenv("UPLOAD_LOCATION").replace("\\", "/");
-     */       for (int i=0;i<files.length;i++)
+            for (int i=0;i<files.length;i++)
             {	String fileName=files[i].getOriginalFilename();
             	String random=nextUniqueId();
             	String temp=filePath+random+fileName;
