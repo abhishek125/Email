@@ -29,3 +29,6 @@ we would not store user uploaded files inside the webapp(why? http://bit.ly/2sLf
 
 ## video demo link
 http://bit.ly/2xpj7ti
+
+## demo
+http://ec2-54-186-93-35.us-west-2.compute.amazonaws.com:8080/Email/

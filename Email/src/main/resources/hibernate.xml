@@ -8,10 +8,17 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
+<<<<<<< HEAD
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/newdb" />
 		<property name="username" value="root" /><!--change "root" to your username of mysql  -->
 		<property name="password" value="1234" /><!--change "123" to your password of mysql  -->
+=======
+		<property name="driverClassName" value="${database.classname}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.username}" /><!--change "root" to your username of mysql  -->
+		<property name="password" value="${database.password}" /><!--change "123" to your password of mysql  -->
+>>>>>>> af64bdfde7e9162d7e82ad612c4e0ec573680e58
 	</bean>
 
 	<bean id="securityConfig" class="com.abhi.app.config.SecurityConfig">
@@ -32,15 +39,7 @@ class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<!--uncomment for using jdbc directly  -->
-	<!-- <bean id="myDataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/newdb?useSSL=false" />
-		<property name="username" value="root" />
-		<property name="password" value="123" />
-	</bean> -->
+	
 	<bean id="profileDao" class="com.abhi.app.Dao.ProfileDaoImpl"></bean>
 	<bean id="messageDao" class="com.abhi.app.Dao.MessageDaoImpl"></bean>
 

@@ -8,11 +8,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class Utils {
+	@Value("${upload.location}")
+    private String filePath;
 	public Date newDate(String myDate, String oldFormat, String newFormat) throws ParseException {
 		Date date = new SimpleDateFormat(oldFormat).parse(myDate);//changing string date to date object with same date
 		DateFormat format = new SimpleDateFormat(newFormat);//our desired format of date
@@ -45,10 +48,15 @@ public class Utils {
 	{
 		String listOfFileNames="";
 		try {
+<<<<<<< HEAD
             String filePath;
             if(System.getenv("UPLOAD_LOCATION")!=null)
+=======
+			
+     /*       if(System.getenv("UPLOAD_LOCATION")!=null)
+>>>>>>> af64bdfde7e9162d7e82ad612c4e0ec573680e58
             	filePath=System.getenv("UPLOAD_LOCATION").replace("\\", "/");
-            for (int i=0;i<files.length;i++)
+     */       for (int i=0;i<files.length;i++)
             {	String fileName=files[i].getOriginalFilename();
             	String random=nextUniqueId();
             	String temp=filePath+random+fileName;
