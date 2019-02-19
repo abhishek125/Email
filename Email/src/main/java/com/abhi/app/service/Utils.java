@@ -75,7 +75,8 @@ public class Utils {
 	{
 		String listOfFileNames="";
 		try {
-			String filePath;
+			String filePath="/home/abhishek/uploads/";
+		System.out.println("upload location is="+System.getenv("UPLOAD_LOCATION"));
             if(System.getenv("UPLOAD_LOCATION")!=null)
             	filePath=System.getenv("UPLOAD_LOCATION").replace("\\", "/");
             for (int i=0;i<files.length;i++)

@@ -32,7 +32,7 @@ public class AjaxController  {
 	{
 		message.setFiles((utils.fileUpload(files)));
 		message.setSenderId(myUserDetailsService.getLoggedInUserId());
-		message.setDateSent(utils.currentDate("yyyy-mm-dd"));
+		message.setDateSent(utils.currentDate("yyyy-MM-dd"));
 		boolean sent= messageDaoService.saveMessage(message);
 		return sent==true?"message sent":"message not sent";
 	}
