@@ -24,9 +24,6 @@ This is a simple email sending project. it has features such as sending and rece
 * if you are using eclipse then skip previous step instead just import this project into eclipse and right click project -> run as -> run     on server.
 * Start tomcat and visit http://localhost:8080/Email/
 
-## note
-we would not store user uploaded files inside the webapp(why? http://bit.ly/2sLfXwf) instead we would store all the user uploaded files in "c:/uploads/" which can be changed by modifying server.xml inside "server" directory of your eclipse workspace, or under "conf" directory inside your tomcat installation directory if you are not using eclipse workspace.you can also set environment variable UPLOAD_LOCATION to the value of your preferred location.
-
 ## video demo link
 http://bit.ly/2xpj7ti
 
